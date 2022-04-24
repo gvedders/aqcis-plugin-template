@@ -1,0 +1,30 @@
+<?php
+/*
+Plugin Name:  My First WordPress Plugin
+Plugin URI:   https://aqcis.xyz 
+Description:  Here is where we place a little description of the plugin. It will be displayed on the Plugins page in WordPress admin area. 
+Version:      1.0
+Author:       AQ CIS
+Author URI:   https://aqcis.xyz
+License:      GPL2
+License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  aqciswp-tutorial
+Domain Path:  /languages
+*/
+
+function aqciswp_follow_us($content) {
+ 
+    // Only do this when a single post is displayed
+    if ( is_single() ) { 
+     
+    // Message you want to display after the post
+     
+    $content .= '<p class="visit-us">If you liked this post then check us out at <a href="https://aqcis.xyz" title="AQ CIS" target="_blank" rel="nofollow">AQ CIS</a>.</p>';
+     
+    } 
+    // Return the content
+    return $content; 
+     
+    }
+    // Hook our function to WordPress the_content filter
+    add_filter('the_content', 'aqciswp_follow_us'); 
